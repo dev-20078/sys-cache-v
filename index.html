@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>404 - Page Not Found</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#0d1117;
+color:#ffffff;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.container{
+width:90%;
+max-width:420px;
+text-align:center;
+animation:fade 1s ease;
+}
+
+.code{
+font-size:120px;
+font-weight:700;
+letter-spacing:5px;
+margin-bottom:10px;
+cursor:default;
+user-select:none;
+}
+
+.title{
+font-size:28px;
+margin-bottom:18px;
+font-weight:600;
+}
+
+.text{
+font-size:16px;
+color:#8b949e;
+line-height:28px;
+margin-bottom:35px;
+}
+
+button{
+background:#238636;
+color:white;
+border:none;
+padding:14px 35px;
+border-radius:40px;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:active{
+transform:scale(.96);
+}
+
+.footer{
+position:fixed;
+bottom:18px;
+left:0;
+width:100%;
+text-align:center;
+font-size:13px;
+color:#666;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.fadeOut{
+animation:fadeOut .8s forwards;
+}
+
+@keyframes fadeOut{
+to{
+opacity:0;
+transform:scale(.98);
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="code" id="secret">
+404
+</div>
+
+<div class="title">
+Page Not Found
+</div>
+
+<div class="text">
+The page you are looking for doesn't exist or may have been moved.
+</div>
+
+<button onclick="history.back()">
+Go Back
+</button>
+
+</div>
+
+<div class="footer">
+Error Code : 404
+</div>
+
+<script>
+
+let taps=0;
+let timer;
+
+const secret=document.getElementById("secret");
+
+secret.addEventListener("click",function(){
+
+taps++;
+
+clearTimeout(timer);
+
+timer=setTimeout(function(){
+
+taps=0;
+
+},3000);
+
+if(taps>=6){
+
+document.body.classList.add("fadeOut");
+
+setTimeout(function(){
+
+window.location.href="page2.html";
+
+},800);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
