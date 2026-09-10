@@ -164,50 +164,56 @@ body{
     }
 }
 
-/* ================= MOTI ================= */
+/* ================= TAKINI PINK NEON ================= */
 
 .moti{
     position:relative;
     display:inline-block;
     margin-bottom:5px;
 
-    font-size:72px;
+    font-size:60px;
     line-height:1;
     font-weight:1000;
-    letter-spacing:-5px;
+    letter-spacing:-4px;
 
-    color:#ff4fa3;
+    color:#ff3fa4;
 
+    /* Strong pink neon */
     text-shadow:
-        0 0 5px rgba(255,79,163,.8),
-        0 0 18px rgba(255,79,163,.65),
-        0 0 45px rgba(255,79,163,.35);
+        0 0 2px #ffffff,
+        0 0 6px #ff3fa4,
+        0 0 14px #ff3fa4,
+        0 0 28px #ff1493,
+        0 0 55px rgba(255,20,147,.8),
+        0 0 90px rgba(255,20,147,.45);
 
     animation:
         motiBounce 2.4s ease-in-out infinite,
-        motiGlow 1.8s ease-in-out infinite alternate;
+        neonPulse 1.7s ease-in-out infinite alternate;
 }
 
-@keyframes motiBounce{
-    0%,100%{transform:rotate(-2deg) scale(1);}
-    50%{transform:rotate(2deg) scale(1.06);}
-}
 
-@keyframes motiGlow{
-    from{
-        filter:drop-shadow(0 0 3px rgba(255,79,163,.3));
-    }
-    to{
-        filter:drop-shadow(0 0 15px rgba(255,79,163,.8));
-    }
-}
-
-/* Individual letter style */
+/* Individual letters */
 
 .moti span{
+    position:relative;
     display:inline-block;
-    animation:letterDance 1.8s ease-in-out infinite;
+
+    color:#ff4fac;
+
+    text-shadow:
+        0 0 3px #fff,
+        0 0 8px #ff4fac,
+        0 0 18px #ff1493,
+        0 0 35px #ff1493,
+        0 0 60px rgba(255,20,147,.8);
+
+    animation:
+        letterDance 1.8s ease-in-out infinite;
 }
+
+
+/* Different funny rotations */
 
 .moti span:nth-child(1){
     transform:rotate(-8deg);
@@ -228,13 +234,59 @@ body{
     transform:rotate(8deg);
 }
 
-@keyframes letterDance{
-    0%,100%{
-        transform:translateY(0) rotate(-4deg);
+.moti span:nth-child(5){
+    animation-delay:.48s;
+    transform:rotate(-7deg);
+}
+
+.moti span:nth-child(6){
+    animation-delay:.60s;
+    transform:rotate(7deg);
+}
+
+
+/* Neon breathing effect */
+
+@keyframes neonPulse{
+
+    0%{
+        filter:
+            brightness(.95)
+            drop-shadow(0 0 5px #ff1493);
     }
+
     50%{
-        transform:translateY(-10px) rotate(5deg);
+        filter:
+            brightness(1.15)
+            drop-shadow(0 0 18px #ff1493);
     }
+
+    100%{
+        filter:
+            brightness(1.3)
+            drop-shadow(0 0 30px #ff1493);
+    }
+}
+
+
+/* Funny letter movement */
+
+@keyframes letterDance{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-4deg)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translateY(-10px)
+            rotate(5deg)
+            scale(1.08);
+    }
+
 }
 
 /* ================= SUBTITLE ================= */
@@ -498,7 +550,7 @@ body{
     <div class="card" id="card">
 
         <div class="moti">
-            <span>M</span><span>O</span><span>T</span><span>I</span>
+    <span>T</span><span>A</span><span>K</span><span>I</span><span>N</span><span>I</span>
         </div>
 
         <div class="subtitle">
