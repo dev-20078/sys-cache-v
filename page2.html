@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080612">
+
+<title>Just For You 💗</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    min-height:100dvh;
+    overflow:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#080612;
+    color:white;
+}
+
+/* ================= BACKGROUND ================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(5,3,15,.78),
+            rgba(30,5,35,.55),
+            rgba(3,10,28,.78)
+        ),
+        url("assets/page2-bg.jpg") center/cover no-repeat;
+    transform:scale(1.05);
+    animation:backgroundMove 12s ease-in-out infinite alternate;
+}
+
+.background::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 35%,
+        rgba(255,80,180,.18),
+        transparent 35%),
+        radial-gradient(circle at 20% 80%,
+        rgba(0,140,255,.15),
+        transparent 35%);
+}
+
+@keyframes backgroundMove{
+    from{transform:scale(1.05);}
+    to{transform:scale(1.12);}
+}
+
+/* ================= PARTICLES ================= */
+
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.particles span{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:0 0 12px #fff;
+    opacity:.7;
+    animation:float 7s linear infinite;
+}
+
+.particles span:nth-child(1){left:10%;animation-delay:0s;}
+.particles span:nth-child(2){left:25%;animation-delay:2s;}
+.particles span:nth-child(3){left:42%;animation-delay:4s;}
+.particles span:nth-child(4){left:61%;animation-delay:1s;}
+.particles span:nth-child(5){left:78%;animation-delay:3s;}
+.particles span:nth-child(6){left:92%;animation-delay:5s;}
+
+@keyframes float{
+    0%{
+        transform:translateY(110vh) scale(.4);
+        opacity:0;
+    }
+    15%{opacity:.8;}
+    85%{opacity:.8;}
+    100%{
+        transform:translateY(-10vh) scale(1);
+        opacity:0;
+    }
+}
+
+/* ================= MUSIC BUTTON ================= */
+
+.music-btn{
+    position:fixed;
+    top:18px;
+    right:18px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(10px);
+    color:white;
+    font-size:19px;
+    z-index:10;
+    box-shadow:0 0 20px rgba(255,80,190,.25);
+}
+
+/* ================= MAIN ================= */
+
+.wrapper{
+    position:relative;
+    z-index:2;
+    min-height:100dvh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+}
+
+.card{
+    width:100%;
+    max-width:390px;
+    padding:38px 25px 30px;
+    text-align:center;
+
+    background:rgba(10,7,20,.48);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:30px;
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.12);
+
+    animation:cardIn 1.1s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.92);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* ================= MOTI ================= */
+
+.moti{
+    position:relative;
+    display:inline-block;
+    margin-bottom:5px;
+
+    font-size:72px;
+    line-height:1;
+    font-weight:1000;
+    letter-spacing:-5px;
+
+    color:#ff4fa3;
+
+    text-shadow:
+        0 0 5px rgba(255,79,163,.8),
+        0 0 18px rgba(255,79,163,.65),
+        0 0 45px rgba(255,79,163,.35);
+
+    animation:
+        motiBounce 2.4s ease-in-out infinite,
+        motiGlow 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes motiBounce{
+    0%,100%{transform:rotate(-2deg) scale(1);}
+    50%{transform:rotate(2deg) scale(1.06);}
+}
+
+@keyframes motiGlow{
+    from{
+        filter:drop-shadow(0 0 3px rgba(255,79,163,.3));
+    }
+    to{
+        filter:drop-shadow(0 0 15px rgba(255,79,163,.8));
+    }
+}
+
+/* Individual letter style */
+
+.moti span{
+    display:inline-block;
+    animation:letterDance 1.8s ease-in-out infinite;
+}
+
+.moti span:nth-child(1){
+    transform:rotate(-8deg);
+}
+
+.moti span:nth-child(2){
+    animation-delay:.12s;
+    transform:rotate(7deg);
+}
+
+.moti span:nth-child(3){
+    animation-delay:.24s;
+    transform:rotate(-6deg);
+}
+
+.moti span:nth-child(4){
+    animation-delay:.36s;
+    transform:rotate(8deg);
+}
+
+@keyframes letterDance{
+    0%,100%{
+        transform:translateY(0) rotate(-4deg);
+    }
+    50%{
+        transform:translateY(-10px) rotate(5deg);
+    }
+}
+
+/* ================= SUBTITLE ================= */
+
+.subtitle{
+    margin-top:10px;
+    margin-bottom:30px;
+
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:1.5px;
+
+    color:#ffd8eb;
+
+    text-shadow:0 0 12px rgba(255,150,210,.5);
+
+    animation:subtitlePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes subtitlePulse{
+    0%,100%{opacity:.75;}
+    50%{opacity:1;}
+}
+
+/* ================= PASSWORD ================= */
+
+.input-wrap{
+    position:relative;
+    margin-bottom:18px;
+}
+
+.password{
+    width:100%;
+    height:56px;
+
+    border:none;
+    outline:none;
+
+    border-radius:18px;
+
+    padding:0 20px;
+
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.2);
+
+    color:white;
+    font-size:17px;
+    text-align:center;
+    letter-spacing:3px;
+
+    transition:.3s;
+
+    box-shadow:
+        inset 0 0 15px rgba(0,0,0,.25),
+        0 0 0 rgba(255,70,160,0);
+}
+
+.password::placeholder{
+    color:rgba(255,255,255,.45);
+    letter-spacing:1px;
+}
+
+.password:focus{
+    border-color:#ff55a8;
+    box-shadow:
+        0 0 20px rgba(255,70,160,.3),
+        inset 0 0 15px rgba(255,70,160,.08);
+}
+
+/* ================= BUTTON ================= */
+
+.unlock{
+    position:relative;
+    width:100%;
+    height:58px;
+
+    border:none;
+    border-radius:19px;
+
+    background:linear-gradient(
+        135deg,
+        #168cff,
+        #0062ff,
+        #744cff
+    );
+
+    color:white;
+
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 0 10px rgba(0,125,255,.7),
+        0 0 30px rgba(0,125,255,.35);
+
+    transition:.25s;
+}
+
+.unlock::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:70%;
+    height:100%;
+
+    background:linear-gradient(
+        100deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    animation:shine 2.5s infinite;
+}
+
+@keyframes shine{
+    0%{left:-100%;}
+    45%,100%{left:140%;}
+}
+
+.unlock:active{
+    transform:scale(.96);
+    box-shadow:
+        0 0 25px rgba(0,145,255,.9),
+        0 0 55px rgba(0,125,255,.5);
+}
+
+/* ================= ERROR ================= */
+
+.error{
+    min-height:23px;
+    margin-top:15px;
+
+    font-size:14px;
+    font-weight:bold;
+
+    color:#ff6b9d;
+    opacity:0;
+    transition:.3s;
+}
+
+.error.show{
+    opacity:1;
+}
+
+.shake{
+    animation:shake .45s ease;
+}
+
+@keyframes shake{
+    0%,100%{transform:translateX(0);}
+    20%{transform:translateX(-10px);}
+    40%{transform:translateX(10px);}
+    60%{transform:translateX(-7px);}
+    80%{transform:translateX(7px);}
+}
+
+/* ================= DISCLAIMER ================= */
+
+.warning{
+    margin-top:24px;
+
+    font-size:11px;
+    line-height:18px;
+    font-weight:800;
+    letter-spacing:.3px;
+
+    color:#ffd66e;
+
+    text-shadow:0 0 10px rgba(255,200,70,.55);
+
+    animation:warningBlink 1.15s infinite;
+}
+
+@keyframes warningBlink{
+    0%,100%{opacity:1;}
+    50%{opacity:.25;}
+}
+
+/* ================= SUCCESS ================= */
+
+.success{
+    position:fixed;
+    inset:0;
+    z-index:50;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#05030b;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:1s;
+}
+
+.success.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.success-text{
+    font-size:26px;
+    font-weight:900;
+    text-align:center;
+
+    color:#ff65ae;
+
+    text-shadow:
+        0 0 15px #ff65ae,
+        0 0 40px #ff65ae;
+
+    animation:successPulse 1s infinite alternate;
+}
+
+@keyframes successPulse{
+    from{transform:scale(.95);}
+    to{transform:scale(1.05);}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="background"></div>
+
+<!-- FLOATING PARTICLES -->
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" id="musicBtn" aria-label="Music">
+    🎵
+</button>
+
+<!-- MAIN -->
+<div class="wrapper">
+
+    <div class="card" id="card">
+
+        <div class="moti">
+            <span>M</span><span>O</span><span>T</span><span>I</span>
+        </div>
+
+        <div class="subtitle">
+            Password likho chup chap 😎
+        </div>
+
+        <div class="input-wrap">
+            <input
+                type="password"
+                id="password"
+                class="password"
+                placeholder="Enter password"
+                autocomplete="off"
+                spellcheck="false"
+            >
+        </div>
+
+        <button class="unlock" id="unlock">
+            Shuru Karo ✨
+        </button>
+
+        <div class="error" id="error">
+            Password galat hai 😏
+        </div>
+
+        <div class="warning">
+            ⚠️ Headphones use nai kiya toh aake thappad marunga
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div class="success" id="success">
+    <div class="success-text">
+        Unlocking... 💗
+    </div>
+</div>
+
+
+<script>
+
+/* =====================================================
+   SHA-256 HASH OF THE PASSWORD
+   Plaintext password is NOT stored here.
+   ===================================================== */
+
+const correctHash =
+"95f61c30b5a0b27288a4663201bcc0f235b4bce8a06de8ce2832df66c2e984db";
+
+
+/* SHA-256 */
+
+async function sha256(text){
+
+    const encoder = new TextEncoder();
+
+    const data = encoder.encode(text);
+
+    const hashBuffer =
+        await crypto.subtle.digest("SHA-256", data);
+
+    const hashArray =
+        Array.from(new Uint8Array(hashBuffer));
+
+    return hashArray
+        .map(byte => byte.toString(16).padStart(2,"0"))
+        .join("");
+
+}
+
+
+/* =====================================================
+   ELEMENTS
+   ===================================================== */
+
+const password =
+    document.getElementById("password");
+
+const unlock =
+    document.getElementById("unlock");
+
+const error =
+    document.getElementById("error");
+
+const card =
+    document.getElementById("card");
+
+const success =
+    document.getElementById("success");
+
+const music =
+    document.getElementById("music");
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+
+/* =====================================================
+   MUSIC
+   ===================================================== */
+
+let musicPlaying = false;
+
+function startMusic(){
+
+    music.play()
+    .then(() => {
+
+        musicPlaying = true;
+        musicBtn.textContent = "🔊";
+
+    })
+    .catch(() => {
+
+        musicPlaying = false;
+
+    });
+
+}
+
+musicBtn.addEventListener("click",function(){
+
+    if(musicPlaying){
+
+        music.pause();
+
+        musicPlaying = false;
+
+        musicBtn.textContent = "🎵";
+
+    }else{
+
+        startMusic();
+
+    }
+
+});
+
+
+/* Start music after first user interaction */
+
+document.addEventListener(
+    "click",
+    function(){
+
+        if(!musicPlaying){
+            startMusic();
+        }
+
+    },
+    {once:true}
+);
+
+
+/* =====================================================
+   PASSWORD CHECK
+   ===================================================== */
+
+async function checkPassword(){
+
+    const value =
+        password.value;
+
+    error.classList.remove("show");
+
+    if(!value){
+
+        error.textContent =
+            "Pehle password toh daalo 😑";
+
+        error.classList.add("show");
+
+        card.classList.remove("shake");
+
+        void card.offsetWidth;
+
+        card.classList.add("shake");
+
+        return;
+
+    }
+
+
+    const enteredHash =
+        await sha256(value);
+
+
+    if(enteredHash === correctHash){
+
+        /* SUCCESS */
+
+        success.classList.add("active");
+
+        setTimeout(function(){
+
+            window.location.href =
+                "page3.html";
+
+        },1200);
+
+    }else{
+
+        /* WRONG PASSWORD */
+
+        error.textContent =
+            "Password galat hai 😏";
+
+        error.classList.add("show");
+
+        card.classList.remove("shake");
+
+        void card.offsetWidth;
+
+        card.classList.add("shake");
+
+        password.value = "";
+
+    }
+
+}
+
+
+/* Button */
+
+unlock.addEventListener(
+    "click",
+    checkPassword
+);
+
+
+/* Enter key */
+
+password.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            checkPassword();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+  </html>
