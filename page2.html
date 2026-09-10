@@ -604,55 +604,33 @@ const musicBtn =
 
 let musicPlaying = false;
 
-function startMusic(){
+musicBtn.addEventListener("click", async function () {
 
-    music.play()
-    .then(() => {
+    try {
 
-        musicPlaying = true;
-        musicBtn.textContent = "🔊";
+        if (music.paused) {
 
-    })
-    .catch(() => {
+            await music.play();
 
-        musicPlaying = false;
+            musicPlaying = true;
+            musicBtn.textContent = "🔊";
 
-    });
+        } else {
 
-}
+            music.pause();
 
-musicBtn.addEventListener("click",function(){
+            musicPlaying = false;
+            musicBtn.textContent = "🎵";
 
-    if(musicPlaying){
+        }
 
-        music.pause();
+    } catch (error) {
 
-        musicPlaying = false;
-
-        musicBtn.textContent = "🎵";
-
-    }else{
-
-        startMusic();
+        console.log("Music error:", error);
 
     }
 
 });
-
-
-/* Start music after first user interaction */
-
-document.addEventListener(
-    "click",
-    function(){
-
-        if(!musicPlaying){
-            startMusic();
-        }
-
-    },
-    {once:true}
-);
 
 
 /* =====================================================
