@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#54266F">
+<title>Surprise, Surprise, Surprise</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+
+  background:
+    linear-gradient(rgba(255,255,255,0.06),rgba(35,0,65,0.08)),
+    url("background.png") center center / cover no-repeat;
+
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  animation: entrance 1.2s ease both;
+}
+
+h1 {
+  color: #54266F;
+  font-size: clamp(38px, 9vw, 56px);
+  font-weight: 900;
+  line-height: 1.17;
+  letter-spacing: 1px;
+
+  text-shadow:
+    0 1px 0 #f5ddff,
+    0 2px 0 #d9b8ed,
+    0 4px 5px rgba(50,0,70,0.25),
+    0 0 22px rgba(255,255,255,0.8);
+
+  animation: headingGlow 3s ease-in-out infinite;
+}
+
+.subtitle {
+  margin-top: 25px;
+  color: #25205C;
+  font-size: clamp(23px, 6vw, 30px);
+  font-weight: bold;
+
+  text-shadow:
+    0 2px 0 rgba(255,255,255,0.7),
+    0 4px 10px rgba(30,0,60,0.2);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 42px;
+}
+
+.choice-button {
+  position: relative;
+  width: 135px;
+  min-height: 58px;
+  padding: 14px 12px;
+
+  border: 2px solid #d8b477;
+  border-radius: 15px;
+
+  background: linear-gradient(
+    145deg,
+    #c99b5e 0%,
+    #94632f 22%,
+    #754C24 55%,
+    #48270f 100%
+  );
+
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+
+  text-shadow: 0 2px 3px rgba(0,0,0,0.5);
+
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.65),
+    inset 0 -5px 7px rgba(0,0,0,0.28),
+    0 7px 0 #39200e,
+    0 12px 22px rgba(30,10,0,0.35),
+    0 0 18px rgba(255,220,160,0.5);
+
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.choice-button::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+}
+
+.choice-button:active {
+  transform: translateY(6px) scale(0.96);
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.3),
+    0 1px 0 #39200e,
+    0 4px 10px rgba(30,10,0,0.3);
+}
+
+.choice-button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 5px;
+}
+
+@keyframes entrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes headingGlow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.22);
+  }
+}
+
+@media (max-width: 380px) {
+  .buttons {
+    gap: 15px;
+  }
+
+  .choice-button {
+    width: 120px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <h1>
+    Surprise,<br>
+    Surprise,<br>
+    Surprise
+  </h1>
+
+  <p class="subtitle">
+    Want to see?
+  </p>
+
+  <div class="buttons">
+
+    <button
+      class="choice-button"
+      onclick="location.href='page4.html'">
+      YES ✨
+    </button>
+
+    <button
+      class="choice-button"
+      onclick="location.href='no.html'">
+      NO 🙄
+    </button>
+
+  </div>
+
+</main>
+
+</body>
+</html>
